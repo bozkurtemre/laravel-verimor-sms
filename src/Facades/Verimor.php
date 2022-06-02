@@ -5,6 +5,10 @@ namespace Emrebbozkurt\VerimorSms\Facades;
 use Emrebbozkurt\VerimorSms\VerimorService;
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * @method static mixed send($to, $message, $params = [])
+ *
+ */
 class Verimor extends Facade
 {
     /**

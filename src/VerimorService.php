@@ -63,18 +63,18 @@ class VerimorService
      *
      * @return VerimorService
      */
-    public function send($to, $message, $params = [])
+    public static function send($to, $message, $params = [])
     {
-        $this->to = $to;
-        $this->message = $message;
-        $this->params = $params;
-        return $this->request();
+        self::$to = $to;
+        self::$message = $message;
+        self::$params = $params;
+        return self::request();
     }
 
     /**
      * Returning to response
      *
-     * @return string
+     * @return \Illuminate\Http\JsonResponse
      */
     public function response()
     {
@@ -96,26 +96,26 @@ class VerimorService
      *
      * @return VerimorService
      */
-    protected function request()
+    protected static function request()
     {
         $data = [
-            'username' => $this->config['username'],
-            'password' => $this->config['password'],
-            'custom_id' => $this->params['custom_id'] ?? $this->config['custom_id'],
-            'datacoding' => $this->params['datacoding'] ?? $this->config['datacoding'],
-            'valid_for' => $this->params['valid_for'] ?? $this->config['valid_for'],
+            'username' => self::$config['username'],
+            'password' => self::$config['password'],
+            'custom_id' => self::$params['custom_id'] ?? self::$config['custom_id'],
+            'datacoding' => self::$params['datacoding'] ?? self::$config['datacoding'],
+            'valid_for' => self::$params['valid_for'] ?? self::$config['valid_for'],
             'send_at' => Carbon::now()->toDateTimeString(),
             'messages' => [
-                'msg' => $this->message,
-                'dest' => $this->to
+                'msg' => self::$message,
+                'dest' => self::$to
             ]
         ];
 
         $request = Http::post('http://sms.verimor.com.tr/v2/send.json', $data);
 
-        $this->response = ['message' => $request->body(), 'status' => $request->status()];
-        $this->status = $request->status();
+        self::$response = ['message' => $request->body(), 'status' => $request->status()];
+        self::$status = $request->status();
 
-        return $this;
+        return self::class;
     }
 }
