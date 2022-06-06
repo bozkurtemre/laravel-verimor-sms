@@ -1,5 +1,10 @@
 # Laravel Verimor SMS
 
+[![Latest Stable Version](http://poser.pugx.org/emrebbozkurt/laravel-verimor-sms/v)](https://packagist.org/packages/emrebbozkurt/laravel-verimor-sms)
+[![Total Downloads](http://poser.pugx.org/emrebbozkurt/laravel-verimor-sms/downloads)](https://packagist.org/packages/emrebbozkurt/laravel-verimor-sms)
+[![Latest Unstable Version](http://poser.pugx.org/emrebbozkurt/laravel-verimor-sms/v/unstable)](https://packagist.org/packages/emrebbozkurt/laravel-verimor-sms)
+[![License](http://poser.pugx.org/emrebbozkurt/laravel-verimor-sms/license)](https://packagist.org/packages/emrebbozkurt/laravel-verimor-sms)
+
 Easy sending sms on [Verimor SMS API](https://github.com/verimor/SMS-API/).
 
 > **NOTE:** These instructions are for the latest version of Laravel.
