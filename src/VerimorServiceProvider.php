@@ -32,7 +32,5 @@ class VerimorServiceProvider extends ServiceProvider
         $this->app->singleton(VerimorSms::class, function ($app) {
             return new VerimorSms($app['config']['verimor']);
         });
-
-         $this->app->alias(VerimorSms::class, 'verimor');
     }
 }

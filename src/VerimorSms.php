@@ -4,8 +4,9 @@ namespace Emrebbozkurt\VerimorSms;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
+use Emrebbozkurt\VerimorSms\Contracts\VerimorSms as VerimorContract;
 
-class VerimorSms
+class VerimorSms implements VerimorContract
 {
     /**
      *  Config
@@ -63,12 +64,12 @@ class VerimorSms
      *
      * @return VerimorSms
      */
-    public static function send($to, $message, $params = [])
+    public function send($to, $message, $params = [])
     {
-        self::$to = $to;
-        self::$message = $message;
-        self::$params = $params;
-        return self::request();
+        $this->to = $to;
+        $this->message = $message;
+        $this->message = $params;
+        return $this->request();
     }
 
     /**
@@ -96,26 +97,26 @@ class VerimorSms
      *
      * @return VerimorSms
      */
-    protected static function request()
+    public function request()
     {
         $data = [
-            'username' => self::$config['username'],
-            'password' => self::$config['password'],
-            'custom_id' => self::$params['custom_id'] ?? self::$config['custom_id'],
-            'datacoding' => self::$params['datacoding'] ?? self::$config['datacoding'],
-            'valid_for' => self::$params['valid_for'] ?? self::$config['valid_for'],
+            'username' => $this->config['username'],
+            'password' => $this->config['password'],
+            'custom_id' => $this->params['custom_id'] ?? $this->config['custom_id'],
+            'datacoding' => $this->params['datacoding'] ?? $this->config['datacoding'],
+            'valid_for' => $this->params['valid_for'] ?? $this->config['valid_for'],
             'send_at' => Carbon::now()->toDateTimeString(),
             'messages' => [
-                'msg' => self::$message,
-                'dest' => self::$to
+                'msg' => $this->message,
+                'dest' => $this->to
             ]
         ];
 
         $request = Http::post('http://sms.verimor.com.tr/v2/send.json', $data);
 
-        self::$response = ['message' => $request->body(), 'status' => $request->status()];
-        self::$status = $request->status();
+        $this->response = ['message' => $request->body(), 'status' => $request->status()];
+        $this->status = $request->status();
 
-        return self::class;
+        return $this;
     }
 }
