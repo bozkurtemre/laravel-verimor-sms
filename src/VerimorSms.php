@@ -5,7 +5,7 @@ namespace Emrebbozkurt\VerimorSms;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Http;
 
-class VerimorService
+class VerimorSms
 {
     /**
      *  Config
@@ -61,7 +61,7 @@ class VerimorService
     /**
      * Starting to request.
      *
-     * @return VerimorService
+     * @return VerimorSms
      */
     public static function send($to, $message, $params = [])
     {
@@ -94,7 +94,7 @@ class VerimorService
     /**
      * Sending api to request
      *
-     * @return VerimorService
+     * @return VerimorSms
      */
     protected static function request()
     {

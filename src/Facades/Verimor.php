@@ -2,12 +2,13 @@
 
 namespace Emrebbozkurt\VerimorSms\Facades;
 
-use Emrebbozkurt\VerimorSms\VerimorService;
+use Emrebbozkurt\VerimorSms\VerimorSms;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static mixed send($to, $message, $params = [])
+ * @method static void send($to, $message, $params = [])
  *
+ * * @see \Emrebbozkurt\VerimorSms\VerimorSms
  */
 class Verimor extends Facade
 {
@@ -18,6 +19,6 @@ class Verimor extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return VerimorService::class;
+        return VerimorSms::class;
     }
 }
