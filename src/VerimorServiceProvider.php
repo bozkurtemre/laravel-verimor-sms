@@ -29,8 +29,10 @@ class VerimorServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom($this->configPath, 'verimor');
 
-        $this->app->singleton(VerimorService::class, function ($app) {
-            return new VerimorService($app['config']['verimor']);
+        $this->app->singleton(VerimorSms::class, function ($app) {
+            return new VerimorSms($app['config']['verimor']);
         });
+
+         $this->app->alias(VerimorSms::class, 'verimor');
     }
 }
