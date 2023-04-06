@@ -16,8 +16,7 @@
     },
     "require": {
         "php": ">=7.4|^8.0",
-        "illuminate/support": "^8|^9|^10",
-        "illuminate/carbon": "^8|^9|^10"
+        "illuminate/support": "^8|^9|^10"
     },
     "extra": {
         "laravel": {
