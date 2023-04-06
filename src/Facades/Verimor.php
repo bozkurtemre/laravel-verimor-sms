@@ -6,9 +6,9 @@ use Emrebbozkurt\VerimorSms\VerimorSms;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static void send($to, $message, $params = [])
+ * @method static send($to, $message, $params = [])
  *
- * * @see \Emrebbozkurt\VerimorSms\VerimorSms
+ * @see \Emrebbozkurt\VerimorSms\VerimorSms
  */
 class Verimor extends Facade
 {
